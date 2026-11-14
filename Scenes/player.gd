@@ -16,7 +16,9 @@ func _physics_process(delta: float) -> void:
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+		animated_sprite.play("default")
+	if is_on_floor():
+		animated_sprite.play("Walking")
 	# Wall jump OR automatic jump on landing
 	if wall_waiting:
 		if Input.is_action_pressed("jump") or is_on_floor():
@@ -33,12 +35,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 	else:
 		velocity.x = SPEED * direction
+		
 	
-	#if direction:
-		#animated_sprite.set_flip_h(true)
-	#else:
-		#animated_sprite.set_flip_h(false)
-	animated_sprite.flip_h()
+	animated_sprite.flip_h = direction < 0
 	move_and_slide()
 	# Detect wall
 	if not wall_waiting and is_on_wall() and not is_on_floor():

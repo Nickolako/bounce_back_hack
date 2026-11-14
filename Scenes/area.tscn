@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cry1fkctbikw8"]
+
+[ext_resource type="Texture2D" uid="uid://divb1m00xpk1h" path="res://assets/tiles/window.png" id="1_o88qo"]
+[ext_resource type="Script" uid="uid://d0kgughetbo62" path="res://Script/area.gd" id="1_oujlu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8hg3"]
+size = Vector2(32, 32)
+
+[node name="Area" type="Area2D" unique_id=12912706]
+script = ExtResource("1_oujlu")
+
+[node name="Window" type="Sprite2D" parent="." unique_id=1169942266]
+z_index = -1
+texture = ExtResource("1_o88qo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1001042909]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_s8hg3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
