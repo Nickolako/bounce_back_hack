@@ -1,3 +1,38 @@
 [gd_scene format=3 uid="uid://dgpcqfhmq3cd2"]
 
-[node name="Node2D" type="Node2D" unique_id=336600166]
+[ext_resource type="Script" uid="uid://d35c3atmbei0w" path="res://Scenes/player.gd" id="1_r150o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmcal"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8hg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmcal"]
+size = Vector2(30, 28)
+
+[sub_resource type="QuadMesh" id="QuadMesh_s8hg3"]
+
+[node name="Main" type="Node2D" unique_id=336600166]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1451690725]
+position = Vector2(-517, -18)
+script = ExtResource("1_r150o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1899228440]
+shape = SubResource("CapsuleShape2D_fmcal")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player" unique_id=1294683541]
+scale = Vector2(16.443321, 16.443321)
+mesh = SubResource("CapsuleMesh_s8hg3")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1387360889]
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1109976075]
+position = Vector2(0, 36)
+scale = Vector2(37.559998, 1)
+
+[node name="GroundCollison" type="CollisionShape2D" parent="Ground" unique_id=1823999716]
+shape = SubResource("RectangleShape2D_fmcal")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Ground" unique_id=1547708678]
+scale = Vector2(28.289822, 28.289822)
+mesh = SubResource("QuadMesh_s8hg3")
