@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://d35c3atmbei0w" path="res://Scenes/player.gd" id="1_r150o"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fmcal"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idj7w"]
+size = Vector2(16, 22)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_s8hg3"]
+[sub_resource type="QuadMesh" id="QuadMesh_kln2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fmcal"]
 size = Vector2(30, 28)
@@ -18,11 +19,12 @@ position = Vector2(-517, -18)
 script = ExtResource("1_r150o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1899228440]
-shape = SubResource("CapsuleShape2D_fmcal")
+shape = SubResource("RectangleShape2D_idj7w")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Player" unique_id=1294683541]
-scale = Vector2(16.443321, 16.443321)
-mesh = SubResource("CapsuleMesh_s8hg3")
+modulate = Color(0.742128, 0.09197418, 0.10307633, 1)
+scale = Vector2(16.443321, 22.542723)
+mesh = SubResource("QuadMesh_kln2b")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1387360889]
 
@@ -31,8 +33,33 @@ position = Vector2(0, 36)
 scale = Vector2(37.559998, 1)
 
 [node name="GroundCollison" type="CollisionShape2D" parent="Ground" unique_id=1823999716]
+scale = Vector2(1.0426971, 1.0496057)
 shape = SubResource("RectangleShape2D_fmcal")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground" unique_id=1547708678]
-scale = Vector2(28.289822, 28.289822)
+scale = Vector2(31.351871, 29.710775)
+mesh = SubResource("QuadMesh_s8hg3")
+
+[node name="Wall_1" type="StaticBody2D" parent="." unique_id=1241359165]
+position = Vector2(326, -35)
+scale = Vector2(1.2205117, -15.212302)
+
+[node name="GroundCollison" type="CollisionShape2D" parent="Wall_1" unique_id=994367323]
+scale = Vector2(1.0426971, 1.0496057)
+shape = SubResource("RectangleShape2D_fmcal")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall_1" unique_id=814876110]
+scale = Vector2(31.351871, 29.710775)
+mesh = SubResource("QuadMesh_s8hg3")
+
+[node name="Wall_2" type="StaticBody2D" parent="." unique_id=2066802124]
+position = Vector2(170.00003, -279)
+scale = Vector2(1.2205117, -15.212302)
+
+[node name="GroundCollison" type="CollisionShape2D" parent="Wall_2" unique_id=926165075]
+scale = Vector2(1.0426971, 1.0496057)
+shape = SubResource("RectangleShape2D_fmcal")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall_2" unique_id=1234781625]
+scale = Vector2(31.351871, 29.710775)
 mesh = SubResource("QuadMesh_s8hg3")
