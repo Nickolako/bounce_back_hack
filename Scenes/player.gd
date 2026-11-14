@@ -8,6 +8,9 @@ var direction = 1
 var wall_waiting = false
 var wall_direction = 0
 
+@onready var animated_sprite = $AnimatedSprite2D
+
+
 
 func _physics_process(delta: float) -> void:
 	# Gravity
@@ -30,9 +33,13 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 	else:
 		velocity.x = SPEED * direction
-
+	
+	#if direction:
+		#animated_sprite.set_flip_h(true)
+	#else:
+		#animated_sprite.set_flip_h(false)
+	animated_sprite.flip_h()
 	move_and_slide()
-
 	# Detect wall
 	if not wall_waiting and is_on_wall() and not is_on_floor():
 		var normal = get_wall_normal()
@@ -40,3 +47,4 @@ func _physics_process(delta: float) -> void:
 		if normal.x * direction < -0.5:
 			wall_waiting = true
 			wall_direction = int(sign(normal.x))
+			
